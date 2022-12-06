@@ -1,27 +1,14 @@
-const JUGNU = require("./handlers/Client");
-const { TOKEN } = require("./settings/config");
-require("ffmpeg-static");
-const client = new JUGNU();
-module.exports = client;
+const config = require('./config.js');
 
-client.start(TOKEN);
+if(config.shardManager.shardStatus == true){
 
-process.on("unhandledRejection", (reason, p) => {
-  console.log(" [Error_Handling] :: Unhandled Rejection/Catch");
-  console.log(reason, p);
-});
+const { ShardingManager } = require('discord.js');
+const manager = new ShardingManager('./bot.js', { token: config.TOKEN || process.env.TOKEN });
+manager.on('shardCreate', shard => console.log(`Launched shard ${shard.id}`));
+manager.spawn();
 
-process.on("uncaughtException", (err, origin) => {
-  console.log(" [Error_Handling] :: Uncaught Exception/Catch");
-  console.log(err, origin);
-});
+} else {
 
-process.on("uncaughtExceptionMonitor", (err, origin) => {
-  console.log(" [Error_Handling] :: Uncaught Exception/Catch (MONITOR)");
-  console.log(err, origin);
-});
+require("./bot.js")
 
-process.on("multipleResolves", (type, promise, reason) => {
-  //   console.log(" [Error_Handling] :: Multiple Resolves");
-  //   console.log(type, promise, reason);
-});
+}
