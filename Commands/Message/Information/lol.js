@@ -26,6 +26,6 @@ module.exports = {
   run: async (client, message, args, prefix, queue, msg ) => {
     // Code
     client.embed(message, `${args}`);
-    
+    message.channel.send({ content: `hi` })
   },
 };
