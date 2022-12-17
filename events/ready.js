@@ -4,7 +4,7 @@ const client = require("../index");
 client.on("ready", async () => {
   console.log(`${client.user.username} Is Online`);
   client.user.setActivity({
-    name: ` /help o_o "Made by Pewds"` ,
+    name: ` /help o_o Pewds👉👈` ,
     type: ActivityType.Playing,
   });
 
