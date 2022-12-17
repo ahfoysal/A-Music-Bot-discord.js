@@ -1,10 +1,10 @@
 const { Message } = require("discord.js");
 const JUGNU = require("../../../handlers/Client");
 const { Queue } = require("distube");
-
+  
 module.exports = {
-  name: "lol",
-  aliases: ["test"],
+  name: "say",
+
   description: `get ping of bot`,
   userPermissions: ['SEND_MESSAGES'],
   botPermissions: ['EMBED_LINKS'],
@@ -25,7 +25,14 @@ module.exports = {
    */
   run: async (client, message, args, prefix, queue, msg ) => {
     // Code
-    client.embed(message, `${args}`);
-    message.channel.send({ content: `hi` })
+    
+    let arr =  args;
+    const withoutCommas = arr.join(' ')
+  
+    console.log(withoutCommas)
+     message.delete(1000);
+     message.channel.send({ content: `${withoutCommas}` })
+      
+    
   },
 };
