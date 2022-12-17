@@ -4,6 +4,7 @@
 
 # dependencies
 /node_modules
+/settings
 /.pnp
 .pnp.js
 
@@ -12,7 +13,7 @@
 
 # production
 /build
-/settings
+
 # misc
 .DS_Store
 .env.local
@@ -23,3 +24,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+settings/config.js
