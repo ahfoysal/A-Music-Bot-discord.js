@@ -1,5 +1,6 @@
 const { ActivityType } = require("discord.js");
 const client = require("../index");
+const { TOKEN } = require("../settings/config");
 
 client.on("ready", async () => {
   console.log(`${client.user.username} Is Online`);
